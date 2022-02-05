@@ -152,6 +152,7 @@ void loop() {
   }
   if (sleepCnt >= 3) {
     sleepCnt = 0;
+    /*
     for (int i=0; i<1; i++){ 
       doStep(0);
       delay(10);
@@ -176,6 +177,7 @@ void loop() {
       stopMotor();
       delay(50);
     }
+    */
     checkTempStatus = true;
   }
   else {
