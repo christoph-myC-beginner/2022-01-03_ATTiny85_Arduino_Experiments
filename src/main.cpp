@@ -147,95 +147,101 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  if (sleepStatus == true) {
-    sendToSleep();
-  }
-  if (sleepCnt >= 3) {
-    sleepCnt = 0;
-    /*
-    for (int i=0; i<1; i++){ 
-      doStep(0);
-      delay(10);
-      stopMotor();
-      delay(50);
-    }
-    for (int i=0; i<1; i++){ 
-      doStep(1);
-      delay(10);
-      stopMotor();
-      delay(50);
-    }
-    for (int i=0; i<1; i++){ 
-      doStep(1);
-      delay(10);
-      stopMotor();
-      delay(50);
-    }
-    for (int i=0; i<1; i++){ 
-      doStep(0);
-      delay(10);
-      stopMotor();
-      delay(50);
-    }
-    */
-    checkTempStatus = true;
-  }
-  else {
-  }
-  if (pinChangeStatus == true) {
-    pinChangeStatus = false;
-    //GIMSK &= ~(1 << PCIE);
-    //GIFR &= ~((1 << PCIF) | (1 << INTF0));
-
-    //GIMSK |= (1 << PCIE) & ~(1 << INT0); 
-  } 
   
-  if (checkTempStatus == true) {
-    sensors.requestTemperatures(); // Send the command to get temperatures
-    tempC = (sensors.getTempCByIndex(0) + 0.5);
-    
-    if (tempC > tempCOld) {
-      for (int i=0; i<(tempC - tempCOld); i++){ 
-        doStep(DirMotorRight);
-        delay(10);
-        stopMotor();
-        delay(50);
-      }
-      tempCOld = tempC; 
-      sleepStatus = true;
-    }
-    else if (tempC < tempCOld) {
-      for (int i=0; i<(tempCOld - tempC); i++){ 
-        doStep(DirMotorLeft);
-        delay(10);
-        stopMotor();
-        delay(50);
-      }
-      tempCOld = tempC;
-      sleepStatus = true;
-    }
-    else {
-      tempCOld = tempC;
-    }
-    checkTempStatus = false;
-  }
-  else {
-    sleepStatus = true;
-  }
-  /*
-  delay(1000);
+ //if (sleepStatus == true) {
+ //  sendToSleep();
+ //}
+ //if (sleepCnt >= 3) {
+ //  sleepCnt = 0;
+ //  /*
+ //  for (int i=0; i<1; i++){ 
+ //    doStep(0);
+ //    delay(10);
+ //    stopMotor();
+ //    delay(50);
+ //  }
+ //  for (int i=0; i<1; i++){ 
+ //    doStep(1);
+ //    delay(10);
+ //    stopMotor();
+ //    delay(50);
+ //  }
+ //  for (int i=0; i<1; i++){ 
+ //    doStep(1);
+ //    delay(10);
+ //    stopMotor();
+ //    delay(50);
+ //  }
+ //  for (int i=0; i<1; i++){ 
+ //    doStep(0);
+ //    delay(10);
+ //    stopMotor();
+ //    delay(50);
+ //  }
+ //  */
+ //  checkTempStatus = true;
+ //}
+ //else {
+ //}
+
+ //if (pinChangeStatus == true) {
+ //  pinChangeStatus = false;
+ //  //GIMSK &= ~(1 << PCIE);
+ //  //GIFR &= ~((1 << PCIF) | (1 << INTF0));
+
+ //  //GIMSK |= (1 << PCIE) & ~(1 << INT0); 
+ //} 
+ //
+ //if (checkTempStatus == true) {
+ //  sensors.requestTemperatures(); // Send the command to get temperatures
+ //  tempC = (sensors.getTempCByIndex(0) + 0.5);
+ //  
+ //  if (tempC > tempCOld) {
+ //    for (int i=0; i<(tempC - tempCOld); i++){ 
+ //      doStep(DirMotorRight);
+ //      delay(10);
+ //      stopMotor();
+ //      delay(50);
+ //    }
+ //    tempCOld = tempC; 
+ //    sleepStatus = true;
+ //  }
+ //  else if (tempC < tempCOld) {
+ //    for (int i=0; i<(tempCOld - tempC); i++){ 
+ //      doStep(DirMotorLeft);
+ //      delay(10);
+ //      stopMotor();
+ //      delay(50);
+ //    }
+ //    tempCOld = tempC;
+ //    sleepStatus = true;
+ //  }
+ //  else {
+ //    tempCOld = tempC;
+ //  }
+ //  checkTempStatus = false;
+ //}
+ //else {
+ //  sleepStatus = true;
+ //}
+  
+  
+  delay(500);
   for (int i=0; i<20; i++){ 
     doStep(0);
-    delay(300);
+    delay(30);
     stopMotor();
   }
+  
   //stopMotor();
-  delay(1000);
+  delay(500);
   for (int i=0; i<20; i++){ 
     doStep(1);
-    delay(3);
+    delay(30);
     stopMotor();
   }
+  
+  /*
   //stopMotor();
   digitalWrite(PB0, HIGH);
   digitalWrite(PB1, HIGH);
